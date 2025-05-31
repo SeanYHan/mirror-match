@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mirror">
+  <path d="M12 21a9 9 0 0 0 9-9V3H3v9a9 9 0 0 0 9 9Z"></path>
+  <path d="M12 21v-9"></path>
+  <path d="M9 3v9"></path>
+  <path d="M15 3v9"></path>
+  <path d="M3 7h18"></path>
+</svg>
