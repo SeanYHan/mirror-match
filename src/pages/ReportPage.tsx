@@ -34,7 +34,7 @@ const ReportPage: React.FC = () => {
     You excel at ${strongestSkill[0]}. This is evident in how you ${
       strongestSkill[0] === 'communication' ? 'express yourself clearly and engage others in conversation' :
       strongestSkill[0] === 'confidence' ? 'present yourself with self-assurance and positive body language' :
-      strongestSkill[0] === 'empathy' ? 'understand and respond to others' emotions and perspectives' :
+      strongestSkill[0] === 'empathy' ? "understand and respond to others' emotions and perspectives" :
       strongestSkill[0] === 'complimenting' ? 'offer genuine and specific praise that makes others feel valued' :
       'actively listen and show interest in what others are sharing'
     }. This skill creates a positive impression and helps establish connection in dating scenarios.

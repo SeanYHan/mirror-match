@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
-import { Menu, X, Mirror, User, BarChart2, MessageSquare, FileText } from 'lucide-react';
+import { Menu, X, Sparkles, User, BarChart2, MessageSquare, FileText } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <Mirror className="h-8 w-8 text-primary-600" />
+              <Sparkles className="h-8 w-8 text-primary-600" />
               <span className="ml-2 text-xl font-semibold text-neutral-900">Mirror Match</span>
             </Link>
           </div>
