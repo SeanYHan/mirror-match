@@ -22,4 +22,27 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables
 .env
+.env.*
+!.env.example
+
+# Build output
+build/
+out/
+
+# Coverage directory
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+
+# coachMatch specific
+coachMatch/dist/
+coachMatch/node_modules/
+coachMatch/.DS_Store
+coachMatch/.replit
+coachMatch/generated-icon.png
+coachMatch/attached_assets/
