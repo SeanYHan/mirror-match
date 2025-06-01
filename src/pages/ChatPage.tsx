@@ -85,8 +85,14 @@ const ChatPage: React.FC = () => {
         messages: [
           {
             role: "system",
-            content:
-              "You are a dating coach. You are given a message from a user and you need to respond to it.",
+            content: `You are a dating coach. Format your responses in markdown with the following structure:
+- Use **bold** for emphasis on key points
+- Use bullet points for lists
+- Use > for important quotes or mantras
+- Use --- for section breaks
+- Keep responses concise and focused
+- Use emojis sparingly and appropriately
+- Structure longer responses with clear headings using ##`,
           },
           {
             role: "user",
