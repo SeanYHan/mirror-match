@@ -10,6 +10,7 @@ const ChatPage: React.FC = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const initialGreetingSent = useRef(false);
   
   // Auto-scroll chat to bottom when new messages arrive
   useEffect(() => {
@@ -20,7 +21,8 @@ const ChatPage: React.FC = () => {
   
   // Initial greeting if chat is empty
   useEffect(() => {
-    if (chatHistory.length === 0 && avatar) {
+    if (chatHistory.length === 0 && avatar && !initialGreetingSent.current) {
+      initialGreetingSent.current = true;
       setIsTyping(true);
       
       setTimeout(() => {
@@ -28,7 +30,7 @@ const ChatPage: React.FC = () => {
         setIsTyping(false);
       }, 1500);
     }
-  }, []);
+  }, [chatHistory, avatar, user?.name, addMessage]);
   
   const handleSendMessage = () => {
     if (inputMessage.trim() === '') return;
