@@ -36,14 +36,40 @@ const Navbar: React.FC = () => {
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
             <Link to="/" className="flex items-center" onClick={() => isReviewerMode && toggleReviewerMode()}>
               <Sparkles className="h-8 w-8 text-primary-600" />
               <span className="ml-2 text-xl font-semibold text-neutral-900">Mirror Match</span>
             </Link>
             
+            {/* Reviewer mode toggle - desktop */}
+            <div className="hidden md:flex items-center">
+              <div className="flex items-center bg-neutral-100 rounded-full p-1">
+                <button
+                  onClick={() => isReviewerMode && toggleReviewerMode()}
+                  className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
+                    !isReviewerMode 
+                      ? 'bg-white text-neutral-900 shadow-sm' 
+                      : 'text-neutral-500 hover:text-neutral-900'
+                  }`}
+                >
+                  User
+                </button>
+                <button
+                  onClick={() => !isReviewerMode && toggleReviewerMode()}
+                  className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
+                    isReviewerMode 
+                      ? 'bg-white text-neutral-900 shadow-sm' 
+                      : 'text-neutral-500 hover:text-neutral-900'
+                  }`}
+                >
+                  Reviewer
+                </button>
+              </div>
+            </div>
+            
             {/* Mobile reviewer mode toggle */}
-            <div className="md:hidden flex items-center ml-4">
+            <div className="md:hidden flex items-center">
               <div className="flex items-center bg-neutral-100 rounded-full p-1 w-fit">
                 <button
                   onClick={() => isReviewerMode && toggleReviewerMode()}
@@ -72,50 +98,22 @@ const Navbar: React.FC = () => {
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-4">
             {user && (
-              <>
-                <div className="flex items-center space-x-4">
-                  {navLinks.map(({ path, icon: Icon }) => (
-                    <button
-                      key={path}
-                      onClick={() => handleNavClick(path)}
-                      className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                        isActive(path)
-                          ? 'text-primary-700 bg-primary-50'
-                          : 'text-neutral-600 hover:text-primary-600 hover:bg-primary-50'
-                      }`}
-                    >
-                      <Icon className="h-5 w-5 mr-1" />
-                      <span className="ml-1">{path.replace('/', '').charAt(0).toUpperCase() + path.replace('/', '').slice(1)}</span>
-                    </button>
-                  ))}
-                </div>
-                
-                {/* Reviewer mode toggle */}
-                <div className="flex items-center h-10 border-l border-neutral-200 pl-4">
-                  <div className="flex items-center bg-neutral-100 rounded-full p-1">
-                    <button
-                      onClick={() => isReviewerMode && toggleReviewerMode()}
-                      className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
-                        !isReviewerMode 
-                          ? 'bg-white text-neutral-900 shadow-sm' 
-                          : 'text-neutral-500 hover:text-neutral-900'
-                      }`}
-                    >
-                      User
-                    </button>
-                    <button
-                      onClick={() => !isReviewerMode && toggleReviewerMode()}
-                      className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
-                        isReviewerMode 
-                          ? 'bg-white text-neutral-900 shadow-sm' 
-                          : 'text-neutral-500 hover:text-neutral-900'
-                      }`}
-                    >
-                      Reviewer
-                    </button>
-                  </div>
-                </div>
-              </>
+              <div className="flex items-center space-x-4">
+                {navLinks.map(({ path, icon: Icon }) => (
+                  <button
+                    key={path}
+                    onClick={() => handleNavClick(path)}
+                    className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                      isActive(path)
+                        ? 'text-primary-700 bg-primary-50'
+                        : 'text-neutral-600 hover:text-primary-600 hover:bg-primary-50'
+                    }`}
+                  >
+                    <Icon className="h-5 w-5 mr-1" />
+                    <span className="ml-1">{path.replace('/', '').charAt(0).toUpperCase() + path.replace('/', '').slice(1)}</span>
+                  </button>
+                ))}
+              </div>
             )}
             
             {!user && (
