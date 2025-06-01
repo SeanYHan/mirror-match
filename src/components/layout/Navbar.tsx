@@ -12,13 +12,14 @@ import {
   FileText,
   ClipboardCheck,
   LayoutDashboard,
+  UserCog,
 } from "lucide-react";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { user } = useApp();
+  const { user, toggleDatingCoach } = useApp();
   const { isReviewerMode, toggleReviewerMode } = useReviewer();
 
   const handleNavClick = (path: string) => {
@@ -29,7 +30,6 @@ const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    // { path: '/', icon: Home, label: 'Home' },
     { path: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
     { path: "/chat", icon: MessageSquare, label: "Chat" },
     { path: "/report", icon: BarChart2, label: "Report" },
@@ -37,7 +37,6 @@ const Navbar: React.FC = () => {
   ];
 
   const isActive = (path: string) => {
-    // Don't show any menu item as active when in reviewer mode
     if (isReviewerMode) return false;
     return location.pathname === path;
   };
@@ -58,8 +57,33 @@ const Navbar: React.FC = () => {
               </span>
             </Link>
 
-            {/* Mobile reviewer mode toggle */}
-            <div className="md:hidden flex items-center ml-4">
+            {/* Mobile mode toggles */}
+            <div className="md:hidden flex items-center ml-4 space-x-2">
+              {user && (
+                <div className="flex items-center bg-neutral-100 rounded-full p-1 w-fit">
+                  <button
+                    onClick={toggleDatingCoach}
+                    className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
+                      !user.isDatingCoach
+                        ? "bg-white text-neutral-900 shadow-sm"
+                        : "text-neutral-500 hover:text-neutral-900"
+                    }`}
+                  >
+                    User
+                  </button>
+                  <button
+                    onClick={toggleDatingCoach}
+                    className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
+                      user.isDatingCoach
+                        ? "bg-white text-neutral-900 shadow-sm"
+                        : "text-neutral-500 hover:text-neutral-900"
+                    }`}
+                  >
+                    Coach
+                  </button>
+                </div>
+              )}
+
               <div className="flex items-center bg-neutral-100 rounded-full p-1 w-fit">
                 <button
                   onClick={() => isReviewerMode && toggleReviewerMode()}
@@ -109,8 +133,33 @@ const Navbar: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Reviewer mode toggle */}
-                <div className="flex items-center h-10 border-l border-neutral-200 pl-4">
+                {/* Mode toggles */}
+                <div className="flex items-center space-x-4 h-10 border-l border-neutral-200 pl-4">
+                  {/* Dating Coach toggle */}
+                  <div className="flex items-center bg-neutral-100 rounded-full p-1">
+                    <button
+                      onClick={toggleDatingCoach}
+                      className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
+                        !user.isDatingCoach
+                          ? "bg-white text-neutral-900 shadow-sm"
+                          : "text-neutral-500 hover:text-neutral-900"
+                      }`}
+                    >
+                      User
+                    </button>
+                    <button
+                      onClick={toggleDatingCoach}
+                      className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
+                        user.isDatingCoach
+                          ? "bg-white text-neutral-900 shadow-sm"
+                          : "text-neutral-500 hover:text-neutral-900"
+                      }`}
+                    >
+                      Coach
+                    </button>
+                  </div>
+
+                  {/* Reviewer mode toggle */}
                   <div className="flex items-center bg-neutral-100 rounded-full p-1">
                     <button
                       onClick={() => isReviewerMode && toggleReviewerMode()}

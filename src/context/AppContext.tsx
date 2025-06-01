@@ -16,6 +16,7 @@ type UserProfile = {
     complimenting: number;
     listening: number;
   };
+  isDatingCoach: boolean;
 };
 
 type AvatarCoach = {
@@ -33,6 +34,7 @@ type AppContextType = {
   addMessage: (sender: 'user' | 'avatar', message: string) => void;
   isOnboarded: boolean;
   completeOnboarding: () => void;
+  toggleDatingCoach: () => void;
 };
 
 // Create the context
@@ -76,6 +78,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setIsOnboarded(true);
   };
 
+  // Function to toggle dating coach status
+  const toggleDatingCoach = () => {
+    if (user) {
+      setUser({
+        ...user,
+        isDatingCoach: !user.isDatingCoach
+      });
+    }
+  };
+
   // Context value
   const value = {
     user,
@@ -85,7 +97,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     chatHistory,
     addMessage,
     isOnboarded,
-    completeOnboarding
+    completeOnboarding,
+    toggleDatingCoach
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
