@@ -4,19 +4,17 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
-import { useReviewer } from '../../context/ReviewerContext';
 import SubmitFeedback from '../feedback/SubmitFeedback';
 
 const Layout: React.FC = () => {
   const location = useLocation();
-  const { isOnboarded } = useApp();
-  const { isReviewerMode } = useReviewer();
+  const { isOnboarded, userMode } = useApp();
   
   // Hide navbar and footer only on onboarding page
   const showNavFooter = location.pathname !== '/onboarding';
 
-  // Don't show reviewer mode content on feedback-complete page
-  const showReviewerContent = isReviewerMode && location.pathname !== '/feedback-complete';
+  // Show reviewer content only in reviewer mode and not on feedback-complete page
+  const showReviewerContent = userMode === 'reviewer' && location.pathname !== '/feedback-complete';
 
   return (
     <div className="flex flex-col min-h-screen">
