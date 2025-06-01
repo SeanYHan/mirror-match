@@ -9,6 +9,7 @@ type UserProfile = {
   orientation: string;
   interests: string[];
   avatar: string;
+  isDatingCoach: boolean;
   skills: {
     communication: number;
     confidence: number;
@@ -16,7 +17,6 @@ type UserProfile = {
     complimenting: number;
     listening: number;
   };
-  isDatingCoach: boolean;
 };
 
 type AvatarCoach = {
