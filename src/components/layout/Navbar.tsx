@@ -52,8 +52,12 @@ const Navbar: React.FC = () => {
         </button>
         <button
           onClick={() => {
-            if (!isReviewerMode) toggleReviewerMode();
-            if (isCoachMode) toggleCoachMode();
+            if (isCoachMode) {
+              toggleCoachMode();
+            }
+            if (!isReviewerMode) {
+              toggleReviewerMode();
+            }
           }}
           className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
             isReviewerMode && !isCoachMode
@@ -65,8 +69,12 @@ const Navbar: React.FC = () => {
         </button>
         <button
           onClick={() => {
-            if (isReviewerMode) toggleReviewerMode();
-            if (!isCoachMode) toggleCoachMode();
+            if (isReviewerMode) {
+              toggleReviewerMode();
+            }
+            if (!isCoachMode) {
+              toggleCoachMode();
+            }
           }}
           className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
             isCoachMode
