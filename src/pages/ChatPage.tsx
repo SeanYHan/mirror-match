@@ -6,6 +6,9 @@ import ChatBubble from "../components/chat/ChatBubble";
 import TypingIndicator from "../components/chat/TypingIndicator";
 import OpenAI from "openai";
 
+// Debug environment variable
+console.log("API Key:", import.meta.env.VITE_OPENAI_API_KEY);
+
 // Initialize the OpenAI client with your API key
 const client = new OpenAI({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
