@@ -5,7 +5,7 @@ import { useApp } from '../context/AppContext';
 import DemographicsChart from '../components/dashboard/DemographicsChart';
 import SkillsRadarChart from '../components/dashboard/SkillsRadarChart';
 import RecentActivity from '../components/dashboard/RecentActivity';
-import { MessageSquare, FileText, User, Users, Calendar, Settings, ChartBar } from 'lucide-react';
+import { MessageSquare, FileText, User, Users, Calendar, Settings, BarChart as ChartBar } from 'lucide-react';
 
 const DashboardPage: React.FC = () => {
   const { user, avatar } = useApp();
