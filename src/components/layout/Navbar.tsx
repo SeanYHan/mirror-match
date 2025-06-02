@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { useReviewer } from '../../context/ReviewerContext';
-import { Menu, X, Sparkles, User, BarChart2, MessageSquare, FileText, ClipboardCheck, LayoutDashboard } from 'lucide-react';
+import { Menu, X, Sparkles, User, BarChart2, MessageSquare, FileText, ClipboardCheck, LayoutDashboard, Heart } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,8 +52,12 @@ const Navbar: React.FC = () => {
         </button>
         <button
           onClick={() => {
-            if (!isReviewerMode) toggleReviewerMode();
-            if (isCoachMode) toggleCoachMode();
+            if (isCoachMode) {
+              toggleCoachMode();
+            }
+            if (!isReviewerMode) {
+              toggleReviewerMode();
+            }
           }}
           className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
             isReviewerMode && !isCoachMode
@@ -65,8 +69,12 @@ const Navbar: React.FC = () => {
         </button>
         <button
           onClick={() => {
-            if (isReviewerMode) toggleReviewerMode();
-            if (!isCoachMode) toggleCoachMode();
+            if (isReviewerMode) {
+              toggleReviewerMode();
+            }
+            if (!isCoachMode) {
+              toggleCoachMode();
+            }
           }}
           className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors ${
             isCoachMode
@@ -89,8 +97,19 @@ const Navbar: React.FC = () => {
               if (isReviewerMode) toggleReviewerMode();
               if (isCoachMode) toggleCoachMode();
             }}>
-              <Sparkles className="h-8 w-8 text-primary-600" />
-              <span className="ml-2 text-xl font-semibold text-neutral-900">Mirror Match</span>
+              {isCoachMode ? (
+                <>
+                  <div className="w-8 h-8 bg-[#2A5C8D] rounded-lg flex items-center justify-center">
+                    <Heart className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="ml-2 text-xl font-semibold text-neutral-900">IntroSpark</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="h-8 w-8 text-primary-600" />
+                  <span className="ml-2 text-xl font-semibold text-neutral-900">Mirror Match</span>
+                </>
+              )}
             </Link>
             
             {/* Mobile mode toggle */}
